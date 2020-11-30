@@ -11,5 +11,8 @@ footer: '<a href="https://shazstar.github.io/">Home page.</a>'
 style: dark # dark (default), light or hacker
 listen_for_clients_preferred_style: false # true or false (default)
 
+title: ShazStars-MP:blog
+description: /Volumes/ShazStar/GitHub/blog
+
 plugins:
   - jekyll-seo-tag
