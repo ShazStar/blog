@@ -4,11 +4,11 @@ layout: default
 
 <div class="post">
     <h1 class="post-title">{{ page.title }}</h1>
-    <span class="post-date">{{ post.date | date: date_format }}</span>
+    <span class="post-date">{{ page.date | string_to_date }}</span>
     {% if page.tags %}
       {% for tag in page.tags %}
       <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">
-          {{ tag }}
+          Tags: {{ tag }}
       </a>
       {% endfor %}
     {% endif %}
