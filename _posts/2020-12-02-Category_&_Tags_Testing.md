@@ -5,4 +5,6 @@ date:   2020-12-02 10:54:06 +0800
 category: Randoms
 tags: [randoms, updates]
 ---
+#Tags & Category testing.
+
 This is a test post, It's more of testing the tags & category function I'm trying to implement. Hopefully this will work?
