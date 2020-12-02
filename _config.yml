@@ -4,6 +4,8 @@
 
 header_pages:
   - index.md
+  - tags.html
+  - categories.html
   - about.md
 
 footer: Copyright 2020 ShazStar. // <a href="https://shazstar.github.io/">Home page.</a>
