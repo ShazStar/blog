@@ -11,7 +11,7 @@ header_pages:
 footer: Copyright 2021 ShazStar. // <a href="https://shazstar.github.io/">Home page.</a>
 
 style: dark # dark (default), light or hacker
-listen_for_clients_preferred_style: false # true or false (default)
+listen_for_clients_preferred_style: true # true or false (default)
 
 title: ShazStar. // Blog.
 description: ShazStar's personal blog.

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Apple Watch S3 First Impression.
-date:   2020-12-08 22:05:10 +0800
+title: Apple Watch S3 First Impression.
+date: 2020-12-08 22:05:10 +0800
 category: Personal
 tags: [personal, impression]
 ---

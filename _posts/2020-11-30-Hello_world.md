@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Hello world!
-date:   2020-11-30 21:38:00 +0800
+title: Hello world!
+date: 2020-11-30 21:38:00 +0800
 category: Randoms
 tags: randoms
 ---
