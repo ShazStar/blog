@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fixing Jekyll server not running on macOS Catalina or newer.
+title: Fixing Jekyll server & Ruby Gem on macOS Catalina.
 date: 2021-04-16 09:49:20 +0800
 category: Debug
 tags: [tutorial, debug]
