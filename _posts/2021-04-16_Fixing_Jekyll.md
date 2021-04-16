@@ -2,8 +2,8 @@
 layout: post
 title: Fixing Jekyll server not running on macOS Catalina+
 date: 2021-04-16 09:49:20 +0800
-category:
-tags: []
+category: Debug
+tags: [tutorial, debug]
 ---
 After I upgraded my Mac Pro & MacBook Pro to macOS Catalina, I can no longer run Jekyll bundler on it, keep throwing weird errors in ruby gem, since I know there are some shit ass system r/w issues so I'm not surprise that it ran into some stupid issues like this.
 
