@@ -7,7 +7,7 @@ tags: [tutorial, debug]
 ---
 After I upgraded my Mac Pro & MacBook Pro to macOS Catalina, I can no longer run Jekyll bundler on it, keep throwing weird errors in ruby gem, since I know there are some shit ass system r/w issues so I'm not surprise that it ran into some stupid issues like this.
 
-<img src="{{ site.baseurl }}/images/20210416_Jekyll/No_Perm.png" width="500"/>
+<img src="{{ site.baseurl }}/images/20210416_Jekyll/No_Perm.png" width="400"/>
 
 The screenshot I showed here is pretty common on macOS. Ruby gem that are preinstalled on macOS doesn't come out of the box with a proper Ruby development environment. Before doing proper research I just used `sudo`, which after research turns out is **highly** not recommend to do it. And even doing it so on Catalina still make bunch of errors while do "bundle install" (Which works on Mojave before.), I have to dig deeper.
 
@@ -34,8 +34,8 @@ And now the full Ruby environment is set!
 
 You can check if you are on HomeBrew Ruby by typing `which ruby` in terminal, it should report /usr/local/opt/ruby/bin/ruby and not /usr/bin/ruby, here's the screenshot showing both preinstalled macOS Ruby and HomeBrew Ruby.
 
-<img src="{{ site.baseurl }}/images/20210416_Jekyll/Ruby_System.png" width="500"/>
-<img src="{{ site.baseurl }}/images/20210416_Jekyll/Ruby_HomeBrew.png" width="500"/>
+<img src="{{ site.baseurl }}/images/20210416_Jekyll/Ruby_System.png" width="400"/>
+<img src="{{ site.baseurl }}/images/20210416_Jekyll/Ruby_HomeBrew.png" width="400"/>
 
 ## Bundler & Jekyll setup
 
