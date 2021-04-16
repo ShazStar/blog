@@ -20,7 +20,7 @@ First, open terminal and type in `sudo gem uninstall -aIx`, This will uninstall 
 After that Navigate to /Library/ and delete Ruby folder.
 
 ### • Prerequisites
-HomeBrew - https://brew.sh/
+[HomeBrew](https://brew.sh/)
 
 ## Install Ruby
 
