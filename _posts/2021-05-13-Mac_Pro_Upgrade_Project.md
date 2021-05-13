@@ -54,7 +54,7 @@ Boot Mojave Installer -> Wipe SSD and HDD 2 -> Install Mojave on HDD 2 -> Config
 <img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0941.jpeg" width="300"/>
 <img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0944.jpeg" width="300"/>
 
-**Useful links**
+**Useful links.**
 
 Here you can find the detailed guide of installing OC on your Mac Pro, Also huge shoutout to Martin LO, he literally made an OC Package for our beloved Mac Pro, I'm using his OC Package and haven't have any single issue so far, You can also check out his YouTube, he made some useful videos about configuring OC packages for Mac Pro. :)
 
@@ -66,22 +66,22 @@ Here you can find the detailed guide of installing OC on your Mac Pro, Also huge
 
 [Martin LO's OC Package](https://forums.macrumors.com/threads/activate-amd-hardware-acceleration.2180095/page-53?post=28255048#post-28255048)
 
-**My Mac Pro Configuations (As to May 13th, 2021)**
+**My Mac Pro Configuations. (As to May 13th, 2021)**
 
 Mac Pro 2012 Single CPU
 
 CPU: Intel Xeon X5675 6C12T 3.06 GHz
 
-GPU: EVGA GTX 680 2GB (Mac EFI Flashed.)
+GPU: EVGA GTX 680 2GB (Mac EFI Flashed)
 
-Ram: Samsung 16GB DDR3-1333 ECC Reg.
+Ram: Samsung 16GB DDR3-1333 ECC Reg
 
-Disk: Kingstone UV500 240GB SSD (OS) / WD Black 1TB 7.2K RPM HDD (Data) / Seagate SkyHawk 1TB 7.2K RPM HDD (500GB each for Video/VMs and Time Machine.)
+Disk: Kingstone UV500 240GB SSD (OS) / WD Black 1TB 7.2K RPM HDD (Data) / Seagate SkyHawk 1TB 7.2K RPM HDD (500GB each for Video/VMs and Time Machine)
 
 OS: macOS 10.15.7 Catalina
 
 Additional compoments:
 
-BCM94360CD Wi-Fi/BT Combo Card.
+BCM94360CD Wi-Fi/BT Combo Card
 
-HighPoint RocketU 1144D USB 3.0 PCI-E Card.
+HighPoint RocketU 1144D USB 3.0 PCI-E Card
