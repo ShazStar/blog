@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mac Pro 2012 Final Upgrade Project
+title: Mac Pro 2012 Final Upgrade Project.
 date: 2021-05-13 20:45:00 +0800
 category: Personal
 tags: [personal, upgrade]
@@ -17,27 +17,27 @@ Second thing I'm going to add is HighPoint RocketU 1144D USB 3.0 PCI-E Card. Sin
 
 Lastly, on the software part I'm going to install OpenCore and do a clean Catalina Install. As I'm upgrading the hardware, it's also a good opportunity to upgrade the system too.
 
-<img src="{{ site.baseurl }}/images/20210513/Parts.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/Parts.jpeg" width="300"/>
 
 **The Fun/Pain Part, Hardwares.**
 
 The first thing I'm going to remove is the stock AirPort card, but...Things doesn't went smoothly as always. There's a screw that are so tighten that I couldn't get it removed. Took me 2 days to get them out, and as you can see I broke the standoff, also proven that it was really stuck.
 
-<img src="{{ site.baseurl }}/images/20210513/Stuck_Screw.jpg" width="300"/>
-<img src="{{ site.baseurl }}/images/20210513/Removed.jpg" width="300"/>
-<img src="{{ site.baseurl }}/images/20210513/OG_APC.jpg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/Stuck_Screw.jpg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/Removed.jpg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/OG_APC.jpg" width="300"/>
 
 After removed APC, I decided to move on to USB 3.0 Card first, the process is much easier and painless, this is also part of the reason how I liked this Mac Pro's design, you barely need to use screw driver to upgrade some components.
 
-<img src="{{ site.baseurl }}/images/20210513/IMG_0908.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0908.jpeg" width="300"/>
 
 Back to install BCM94360CD in, took me some time to connect the neccessery antenna and BT cords and try to tighten the screws, thankfully that one screw is enough to hold it in its place, was a bit afraid that it won't hold in well.
 
-<img src="{{ site.baseurl }}/images/20210513/New_Card_Installed.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/New_Card_Installed.jpeg" width="300"/>
 
 Now the hardware part is finished, let's moved to the software part. :)
 
-<img src="{{ site.baseurl }}/images/20210513/IMG_0895.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0895.jpeg" width="300"/>
 
 Lastly, I got a 1TB Seagate HDD after came back from vacation (Same date as publish the video.) so that also adds into this upgrade project, No pictures taken tho. :P
 
@@ -49,10 +49,10 @@ My Mac Pro have 3 Disk inserted, 1 being SSD and 2 HDD, 1 is Data and the other 
 
 Boot Mojave Installer -> Wipe SSD and HDD 2 -> Install Mojave on HDD 2 -> Config OC from HDD 2 to SSD & Create Catalina USB -> Install Catalina on SSD -> Setup
 
-<img src="{{ site.baseurl }}/images/20210513/IMG_0932.jpeg" width="300"/>
-<img src="{{ site.baseurl }}/images/20210513/IMG_0936.jpeg" width="300"/>
-<img src="{{ site.baseurl }}/images/20210513/IMG_0941.jpeg" width="300"/>
-<img src="{{ site.baseurl }}/images/20210513/IMG_0944.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0932.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0936.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0941.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20210513_MacPro/IMG_0944.jpeg" width="300"/>
 
 **Useful links**
 
