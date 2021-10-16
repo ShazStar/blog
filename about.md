@@ -3,7 +3,7 @@ layout: page
 title: /about
 permalink: /about
 ---
-ShazStar. // 19 y/o. // Male. (He/Him.) // Techie. // Gamer. // YouTuber. // Photographer. // Newbie Developer? //
+ShazStar. // 20 y/o. // He/Him. // Techie & Avid Gamer. // YouTuber & Photographer. // CSIE Students that are trying to learn coding. //
 
 - <a href="https://shazstar.github.io/contacts">Contacts/Links.</a>
 <p></p>
