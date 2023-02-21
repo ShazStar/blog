@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bypassing "This app is out of date" alert and login to older Twitter App.
+title: Bypass "This app is out of date" alert and login to older Twitter App.
 date: 2023-02-21 13:33:00 +0800
 category: Tutorial
 tags: [tutorial]
