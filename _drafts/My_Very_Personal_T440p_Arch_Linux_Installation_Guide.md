@@ -28,10 +28,99 @@ In most cases it should return: 64. If it shows: No such file or directory. You 
 
 Check internet connection with ping command: `ping -c 3 archlinux.org`
 
-#### Partitioning Disk
+#### Disk Setup
 
 Here I'll be using fdisk to list all the disks and then use cfdisk to do the partitioning job.
 
-Enter `fdisk -l` to list all the disks. Check the disk you wanted to install
+Enter `fdisk -l` to list all the disks. Check the disk you wanted to install, mine will be on `/dev/sdc`.
 
-Then type `cfdisk /dev/sdb/`
+Enter cfdisk by typing `cfdisk /dev/sdc`.
+
+You will be greeted with cfdisk's TUI interface.
+
+In here you'll have to setup 3 partitions, for each is EFI, Swap and OS itself.
+
+I'll install Arch on my 240GB SSD, Here's how I'll setup my partitions:
+EFI - 500MB
+Swap - 20GB (Depends on your RAM and usage)
+Root - The rest of the remaining storages.
+
+If you don't know how much swap you need, you can use [SwapCalc](https://pickwicksoft.github.io/swapcalc/), it's a handy tool to calculate how much swap you might need.
+
+Now that we are ready to setup the partitions, let's get back on PC.
+
+In cfdisk, we first select "New" and type the size as we needed. For example if I wanted to partition with the size 512MB, type `512M`, for 120GB we type `120G`.
+
+Move to "Type" and select size type, EFI system for EFI, Linux Swap for swap, no need to adjust root partition.
+
+After finished the prequirements, move to "Write" to write changes, we are officially done on cfdisk, Quit it.
+
+Now we'll need to format the partitions and enable swap:
+
+EFI: `mkfs.fat -F32 /dev/sdc1`
+Root: `mkfs.ext4 /dev/sdc3`
+Swap: `mkswap /dev/sdc2` -> `swapon /dev/sdc2`
+
+Mount File Systems:
+
+Root: `mount /dev/sdc3 /mnt`
+EFI: `mount --mkdir /dev/sdc1 /mnt/boot`
+Swap: `swapon /dev/sdc2`
+
+#### Base Installation and System Configuration
+
+Base System Installation: `pacstrap -K /mnt base linux linux-firmware`
+Fstab File Generation: `genfstab -U /mnt >> /mnt/etc/fstab`
+Chroot into new system: `arch-chroot /mnt`
+
+Timezone Setup:
+Change the timezone to where you are. In my case, I'll set it to Taiwan, Taipei.
+
+Timezone Set: `ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime`
+Generate /etc/adjtime: `hwclock --systohc`
+
+Localization Setup:
+You can use any text editor for your preferring, I'll use nano in here.
+
+Firstly you'll have to type `/etc/locale.gen` to edit locale gen file.
+Secondly uncomment (Remove #) for your locale, I will uncomment both en_US.UTF-8 and zh_TW.UTF-8 UTF-8.
+Save and Exit.
+Do `locale-gen`.
+Add LANG into /etc/locale.conf: `echo LANG=en_US.UTF-8 > /etc/locale.conf` (I use English as my primary system language across every devices so that's why it's not zh_TW.)
+
+Network, Hosts and Hostname config:
+Replace `ShazStar-T440p-Arch` of your choice.
+
+Set Hostname: `echo ShazStar-T440p-Arch > /etc/hostname`
+
+Add Hosts:
+`echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1 localhost" >> /etc/hosts
+echo "127.0.1.1 ShazStar-T440p-Arch" >> /etc/hosts`
+
+Install & Enable NetworkManager:
+`pacman -S networkmanager
+systemctl enable NetworkManager`
+
+Change root user's Password: `passwd`
+
+Install sudo and nano:
+`pacman -S sudo nano`
+
+Add new user and give sudo permission: 
+Replace `shazstar` with your username of choice.
+
+Add new user: `useradd -mG wheel shazstar`
+If you want to add new user without sudo command privileges: `useradd -m [username]`
+Set Password: `passwd shazstar`
+
+Allow Wheel Group to use Sudo Commands: 
+`EDITOR=nano visudo`
+Find this line `#%wheel ALL=(ALL) ALL` and uncomment it.
+Save and Exit.
+
+
+
+
+
+
