@@ -4,4 +4,4 @@ layout: home
 permalink: /
 ---
 
-Sup. Here's my blog. Make yourself at home. ~ShazStar.
+What's up. This is my personal blog, I don't really update here frequently but feel free to look around. ~ ShazStar.

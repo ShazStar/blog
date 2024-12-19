@@ -3,7 +3,7 @@ layout: page
 title: /about
 permalink: /about
 ---
-ShazStar. // 22 y/o. // He/Him. // CS Major, Tech Enthusiasts & Rhythm Gamer. // YouTuber & Photographer. //
+ShazStar. // 23 y/o. // He/Him. // CS Major, Tech Enthusiasts & Rhythm Gamer. // YouTuber & Photographer. //
 
 - <a href="https://shazstar.github.io/contacts">Contacts/Links.</a>
 <p></p>
