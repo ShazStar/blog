@@ -9,12 +9,12 @@ As someone who hate the new two row timeline that Twitter has been forcing on fo
 
 # Twitter for iOS:
 
-9.37.1 -> Last version without view count and with old timeline.
-9.38 & 9.39 -> Old timeline with view count.
+9.37.1 -> Last version without view counts.
+9.39 -> Last version with old timeline and view counts.
 9.40+ -> New two row timeline.
 
 ## Twitter for Android:
 
-9.68.1 -> Last version without view count and with old timeline.
-9.69.x -> Old timeline with view count.
+9.68.1 -> Last version without view counts.
+9.69.1 -> Last version with old timeline and view counts.
 9.70+ -> New two row timeline.
