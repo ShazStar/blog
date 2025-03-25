@@ -66,7 +66,7 @@ Here you can find the detailed guide of installing OC on your Mac Pro, Also huge
 
 [Martin LO's OC Package](https://forums.macrumors.com/threads/activate-amd-hardware-acceleration.2180095/page-53?post=28255048#post-28255048)
 
-**My Mac Pro Configuations. (As to May 13th, 2021)**
+**My Mac Pro Configuations. (As of May 13th, 2021)**
 
 Mac Pro 2012 Single CPU
 

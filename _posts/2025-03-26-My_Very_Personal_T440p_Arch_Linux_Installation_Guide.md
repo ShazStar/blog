@@ -9,26 +9,46 @@ I've been using macOS for pretty much 6 years now, and Windows since I was at th
 
 I decided to write this guide to myself to memorize things I did during the installation, pretty much everyone who used Arch just tell people to follow the Arch Wiki instead, it's actually a really good and detailed guide but it only covers the very basics, so I've decided to gather up stuffs that I've searched through the internet and make my own "customized" guide that hopefully could also help others to install Arch Linux with DE, I'll be picking KDE as my desktop environment in this guide.
 
+My ThinkPad T440p configurations. (As of Mar 26th, 2025)
 
-## Basic Installation
+CPU: Intel Core i7-4702MQ 4C8T 2.20 GHz
 
-### • Prerequisite
+GPU: Intel HD Graphics 4600
+
+Ram: SK Hynix 16GB DDR3L-1600 (2x 8GB)
+
+Disk: Transcend MTS430S 256GB SSD / Kingstone UV500 240GB SSD / Crucial BX500 240GB SSD
+
+OS: Windows 10 / macOS Monterey / Arch Linux
+
+Additional compoments:
+AUO 14" B140HAN01.3 1080p IPS Display
+Broadcom DW1560 Wi-Fi/Bluetooth Combo Card
+Backlit Keyboard
+T450 Synaptics Trackpad
+
+Final Setup:
+<img src="{{ site.baseurl }}/images/20250326_T440pArch/T440p_Arch_SS.png" width="800"/>
+
+#  • Before Installation
+
+## Prerequisite
 Bootable Arch Install USB ([Download Link](https://archlinux.org/download/)), I used [Ventoy](https://www.ventoy.net/en/index.html) personally but [Rufus](https://rufus.ie/) also works too. If you don't have Windows you can also use [balenaEtcher](https://etcher.balena.io), that program is cross-platform but I personally never used it before.
  
 A working internet connection, Suggest using Ethernet since nobody knows if your Wi-Fi will work after installation. In my case Wi-Fi worked when booting into Arch USB but have to install drivers after installation.
 
-### • Get started
+## Get started
 
 Check BIOS settings, although you don't need to tweak much unlike dealing with Hackintosh, but if you have Secure Boot enabled, you have to disable it beforehand because Arch USB doesn't support Secure Boot, can be setup to work with secure boot after installation if desired. But I keep it disabled since I also have Hackintosh (macOS) on the system.
 
-#### Boot into Arch Install USB
+### Boot into Arch Install USB
 
 First verify if it's boot into UEFI with this command: `cat /sys/firmware/efi/fw_platform_size`
 In most cases it should return: 64. If it shows: No such file or directory. You are most likely Legacy Booted.
 
 Check internet connection with ping command: `ping -c 3 archlinux.org`
 
-#### Disk Setup
+### Disk Setup
 
 Here I'll be using fdisk to list all the disks and then use cfdisk to do the partitioning job.
 
@@ -61,12 +81,12 @@ EFI: `mkfs.fat -F32 /dev/sdc1`
 Root: `mkfs.ext4 /dev/sdc3`
 Swap: `mkswap /dev/sdc2` -> `swapon /dev/sdc2`
 
-Mount File Systems:
+### Mount File Systems
 
 Root: `mount /dev/sdc3 /mnt`
 EFI: `mount --mkdir /dev/sdc1 /mnt/boot`
 
-#### Base Installation and System Configuration
+# • Installation and Configuration
 
 Base System Installation: `pacstrap -K /mnt base linux linux-firmware`
 Fstab File Generation: `genfstab -U /mnt >> /mnt/etc/fstab`
@@ -149,9 +169,7 @@ Save and Exit.
 Base Installation and System Configuration should be finished here by now, exit chroot and reboot system.
 Command as follows: `exit` and then `reboot`
 
-
-
-#### Post Install Setup
+# • Post Install Setup
 
 Since I still don't have a desktop environment yet, I'll need to finish up with the installation.
 
@@ -184,12 +202,8 @@ Fingerprint: `sudo pacman -Syu fprintd` -> Setup in System Settings -> Users. (C
 sshfs (For KDE Connect to be able to browse remote devices.): `sudo pacman -Syu sshfs`
 Geoclue (For Night Light): `sudo pacman -Syu geoclue`
 
-Final Setup:
-<img src="{{ site.baseurl }}/images/20250326_T440pArch/T440p_Arch_SS.png" width="800"/>
+**Useful Links.**
 
+[Arch Wiki](https://wiki.archlinux.org/title/Installation_guide)
 
-
-
-
-
-
+[Arch Plasma Install by XxAcielxX](https://github.com/XxAcielxX/arch-plasma-install)
