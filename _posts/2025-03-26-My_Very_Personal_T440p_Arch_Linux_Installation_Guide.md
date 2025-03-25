@@ -17,7 +17,7 @@ GPU: Intel HD Graphics 4600
 
 Ram: SK Hynix 16GB DDR3L-1600 (2x 8GB)
 
-Disk: Transcend MTS430S 256GB SSD / Kingstone UV500 240GB SSD / Crucial BX500 240GB SSD
+Disk: Transcend MTS430S 256GB SSD / Kingston UV500 240GB SSD / Crucial BX500 240GB SSD
 
 OS: Windows 10 / macOS Monterey / Arch Linux
 

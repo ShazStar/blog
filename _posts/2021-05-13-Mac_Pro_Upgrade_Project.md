@@ -76,7 +76,7 @@ GPU: EVGA GTX 680 2GB (Mac EFI Flashed)
 
 Ram: Samsung 16GB DDR3-1333 ECC Reg
 
-Disk: Kingstone UV500 240GB SSD (OS) / WD Black 1TB 7.2K RPM HDD (Data) / Seagate SkyHawk 1TB 7.2K RPM HDD (500GB each for Video/VMs and Time Machine)
+Disk: Kingston UV500 240GB SSD (OS) / WD Black 1TB 7.2K RPM HDD (Data) / Seagate SkyHawk 1TB 7.2K RPM HDD (500GB each for Video/VMs and Time Machine)
 
 OS: macOS 10.15.7 Catalina
 
