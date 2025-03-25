@@ -5,7 +5,7 @@ date: 2024-06-25 23:20:00 +0800
 category: Experience
 tags: [personal, experience]
 ---
-<img src="{{ site.baseurl }}/images/Windows11Sucks/T440p_W11_SS.png" width="800"/>
+<img src="{{ site.baseurl }}/images/20240625_Windows11Sucks/T440p_W11_SS.png" width="800"/>
 
 Screenshot as a proof ~~so y'all won't assume I'm just shit talking about it :))~~ OS running on ThinkPad T440p on a spare SSD of mine, already wiped it.
 

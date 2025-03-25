@@ -1,13 +1,13 @@
 ---
 layout: post
 title: My Very Personal T440p Arch Linux Installation Guide
-date: 2024-05-04 20:45:00 +0800
+date: 2025-03-26 00:00:00 +0800
 category: Tutorial
 tags: [tutorial]
 ---
 I've been using macOS for pretty much 6 years now, and Windows since I was at the young age. In between I've always been curious about Linux but never really seriously learn or actually using them on a daily basis, until recently with me hosting Minecraft Server, I decided to use Ubuntu as the system and hosted Minecraft server on it. But for my secondary laptop, ThinkPad T440p. I've decided to go with something that's technically more suitable for more experienced Linux users, which is Arch Linux.
 
-I decided to write this guide to myself to memorize things I did during the installation, pretty much everyone who used Arch just tell people to follow the Arch Wiki instead, it's actually a really good and detailed guide but it only covers the very basics, so I've decided to gather up stuffs that I've searched through the internet and make my own "customized" guide that hopefully could also help others to install Arch Linux with DE, I'll be using KDE in this guide but I'll also write a guide for XFCE too, not to mention I was originally going to use XFCE as my DE of choices but because of how it's actually not so suitable for laptop usages with its power management settings, I decided to switch to KDE instead. But I'll also include XFCE guide since I still think it's a really good and lightweight DE to use, but KDE is actually way more feature rich than XFCE. But in the end, just pick what you preferred. :)
+I decided to write this guide to myself to memorize things I did during the installation, pretty much everyone who used Arch just tell people to follow the Arch Wiki instead, it's actually a really good and detailed guide but it only covers the very basics, so I've decided to gather up stuffs that I've searched through the internet and make my own "customized" guide that hopefully could also help others to install Arch Linux with DE, I'll be picking KDE as my desktop environment in this guide.
 
 
 ## Basic Installation
@@ -65,13 +65,15 @@ Mount File Systems:
 
 Root: `mount /dev/sdc3 /mnt`
 EFI: `mount --mkdir /dev/sdc1 /mnt/boot`
-Swap: `swapon /dev/sdc2`
 
 #### Base Installation and System Configuration
 
 Base System Installation: `pacstrap -K /mnt base linux linux-firmware`
 Fstab File Generation: `genfstab -U /mnt >> /mnt/etc/fstab`
 Chroot into new system: `arch-chroot /mnt`
+
+Install sudo and nano:
+`pacman -S sudo nano`
 
 Timezone Setup:
 Change the timezone to where you are. In my case, I'll set it to Taiwan, Taipei.
@@ -82,7 +84,7 @@ Generate /etc/adjtime: `hwclock --systohc`
 Localization Setup:
 You can use any text editor for your preferring, I'll use nano in here.
 
-Firstly you'll have to type `/etc/locale.gen` to edit locale gen file.
+Firstly you'll have to type `nano /etc/locale.gen` to edit locale gen file.
 Secondly uncomment (Remove #) for your locale, I will uncomment both en_US.UTF-8 and zh_TW.UTF-8 UTF-8.
 Save and Exit.
 Do `locale-gen`.
@@ -102,10 +104,10 @@ Install & Enable NetworkManager:
 `pacman -S networkmanager
 systemctl enable NetworkManager`
 
-Change root user's Password: `passwd`
+Wi-Fi Driver: `sudo pacman -S broadcom-wl` (Got Broadcom DW1560 due to Hackintosh)
+Enable Bluetooth Service: `sudo systemctl enable bluetooth`
 
-Install sudo and nano:
-`pacman -S sudo nano`
+Change root user's Password: `passwd`
 
 Add new user and give sudo permission: 
 Replace `shazstar` with your username of choice.
@@ -118,6 +120,73 @@ Allow Wheel Group to use Sudo Commands:
 `EDITOR=nano visudo`
 Find this line `#%wheel ALL=(ALL) ALL` and uncomment it.
 Save and Exit.
+
+Bootloader Install:
+In here I picked systemd-boot for my Linux bootloader.
+Install: `bootctl install`
+Notes: There's an issue where in systemd-boot v257 it will fail on creating boot entry. [Link for Github Issue Pages and Workaround](https://github.com/systemd/systemd/issues/36174)
+
+Create Boot Entry and Configure bootloader:
+
+Configure: `nano /boot/loader/loader.conf` -> uncomment everything -> add `default arch.conf` -> Save and Exit.
+Extra Notes: Since I don't want the boot menu to show up, I changed my timeout from default 3 to 0 so it boot straight into Arch Linux.
+
+Create Boot Entry (Arch Linux and Arch Linux Fallback):
+Check for root partition UUID: `blkid /dev/sdc3` (Change /dev/sdc3 to your root partition)
+
+Arch Linux: `nano /boot/loader/entries/arch.conf` and add these lines as follows:
+`title    Arch Linux
+linux    /vmlinuz-linux
+initrd   /initramfs-linux.img
+options  root=UUID="[root partition UUID]" rw`
+Save and Exit.
+
+Arch Linux Fallback: `nano /boot/loader/entries/arch-fb.conf` and add these lines as follows:
+`title Arch Linux Fallback
+initrd /initrams-linux-fallback.img`
+Save and Exit.
+
+Base Installation and System Configuration should be finished here by now, exit chroot and reboot system.
+Command as follows: `exit` and then `reboot`
+
+
+
+#### Post Install Setup
+
+Since I still don't have a desktop environment yet, I'll need to finish up with the installation.
+
+SDDM Installation & Enable: `sudo pacman -Syu sddm` ->  `sudo systemctl enable sddm`
+KDE Installation: `sudo pacman -Syu plasma-meta  kde-applications-meta` and go with the default option.
+Fonts of choice: Noto Fonts -> `sudo pacman -Syu noto-fonts-cjk`
+After finished everything, do a reboot and you'll be greet with SDDM, then you will be able to use KDE.
+
+Extra Setup:
+
+Arch AUR Helper - yay (Yet another Yogurt):
+`sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si`
+
+Edit makepkg.conf and change MAKEFLAG to -j$(nproc) to make building AUR package faster by using all available CPU cores:
+`sudo nano /etc/makepkg.conf` -> Find MAKEFLAGS -> Uncomment and change "-j2" to "-j$(nproc)".
+
+Edit pacman.conf to prettify pacman output and enable parallel downloads:
+`sudo nano /etc/pacman.conf` -> Find Misc -> Uncomment ParallelDownloads, Color and VerbosePkgLists -> Add ILoveCandy
+
+Chinese Input (Ignore this if you aren't using Chinese lmao):
+`sudo pacman -Syu fcitx5-im fcitx5-chinese-addons fcitx5-chewing` -> Enable it thru KDE System Settings
+
+Miscs:
+Flatpak: `sudo pacman -Syu flatpak` -> `flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`
+Firewall (UFW): `sudo pacman -Syu ufw`
+Fingerprint: `sudo pacman -Syu fprintd` -> Setup in System Settings -> Users. (Can only be used once you were logged in.)
+sshfs (For KDE Connect to be able to browse remote devices.): `sudo pacman -Syu sshfs`
+Geoclue (For Night Light): `sudo pacman -Syu geoclue`
+
+Final Setup:
+<img src="{{ site.baseurl }}/images/20250326_T440pArch/T440p_Arch_SS.png" width="800"/>
+
 
 
 
