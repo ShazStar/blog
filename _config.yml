@@ -6,9 +6,10 @@ header_pages:
   - index.md
   - tags.html
   - categories.html
+  - feed.xml
   - about.md
 
-footer: Copyright 2020-2025 ShazStar. // <a href="{{ site.baseurl }}/feed.xml">RSS.</a> // <a href="https://shazstar.github.io/">Home page.</a>
+footer: Copyright 2020-2025 ShazStar. // <a href="https://shazstar.github.io/">Home page.</a>
 
 style: dark # dark (default), light or hacker
 listen_for_clients_preferred_style: true # true or false (default)
