@@ -40,7 +40,8 @@ We need to configure these files: ups.conf, upsmon.conf, upsd.conf, nut.conf and
 The example file have a lot of stuffs inside so I ended up backing up these files and remake new files to start fresh.
 You can do `cp /etc/nut/ups.conf /etc/nut/ups.example.conf` to copy a backup of the file and wipe out the original one, or do `mv /etc/nut/ups.conf /etc/nut/ups.example.conf` to rename it then remake new one, replace ups.conf to one you are going to edit, now let's get started to edit those file with nano: `nano /etc/nut/ups.conf`. Here's my config.
 
-ups.conf:<pre><code>pollinterval = 1
+ups.conf:
+pollinterval = 1
 maxretry = 3
 
 [ups]
@@ -50,21 +51,20 @@ desc = "APC Back-UPS Pro 700"
 vendorid = 051D
 productid = 0002
 serial = 3xxxxxxxxxxx
-</code></pre>
 
-upsmon.conf:<pre><code>MONITOR ups@localhost 1 upsmon secret master
-</code></pre>
+upsmon.conf:
+MONITOR ups@localhost 1 upsmon secret master
 
-upsd.conf:<pre><code>LISTEN 0.0.0.0 3493
-</code></pre>
+upsd.conf:
+LISTEN 0.0.0.0 3493
 
-nut.conf:<pre><code>MODE=netserver
-</code></pre>
+nut.conf:
+MODE=netserver
 
-upsd.users:<pre><code>[monuser]
+upsd.users:
+[monuser]
 password = secret
 upsmon master
-</code></pre>
 
 After finished up editing this file, reboot PC.
 
@@ -81,14 +81,15 @@ You'll need to install apache2 and nut-cgi with `apt install apache2 nut-cgi`
 
 After installing you need to configure hosts.conf files -> `nano /etc/nut/hosts.conf`. As usual I backup the original file and make a new one.
 
-hosts.conf:<pre><code>MONITOR ups@localhost "APC Back-UPS Pro 700"
-</code></pre>
+hosts.conf:
+MONITOR ups@localhost "APC Back-UPS Pro 700"
 
 Then do `a2enmod cgi` to activate the module and `systemctl restart apache2` to restart apache2.
 
 You'll also have to edit upsset.conf files -> `nano /etc/nut/upsset.conf`
 
-upsset.conf:<pre><code>`I_HAVE_SECURED_MY_CGI_DIRECTORY`</code></pre>
+upsset.conf:
+I_HAVE_SECURED_MY_CGI_DIRECTORY
 
 You should be able to check the dashboard by going to here: `http://192.168.x.x/cgi-bin/nut/upsstats.cgi`, replace x.x with the ip of your master PC.
 
@@ -114,9 +115,11 @@ Install NUT via pacman -> `sudo pacman -Syu nut`
 
 After that you have to configure 3 files: nut.conf, upsmon.conf and upssched.conf.
 
-nut.conf:<pre><code>MODE=netclient</code></pre>
+nut.conf:
+MODE=netclient
 
-upsmon.conf:<pre><code>`RUN_AS_USER root`
+upsmon.conf:
+RUN_AS_USER root
 
 MONITOR ups@192.168.22.117 1 upsmon secret slave
 
@@ -156,9 +159,9 @@ RBWARNTIME 43200
 NOCOMMWARNTIME 600
 
 FINALDELAY 5
-</code></pre>
 
-upssched.conf:<pre><code>CMDSCRIPT /etc/nut/upssched-cmd
+upssched.conf:
+CMDSCRIPT /etc/nut/upssched-cmd
 PIPEFN /etc/nut/upssched/upssched.pipe
 LOCKFN /etc/nut/upssched/upssched.lock
 
@@ -171,7 +174,6 @@ AT COMMOK * CANCEL-TIMER commbad commok
 AT NOCOMM * EXECUTE commbad
 AT SHUTDOWN * EXECUTE powerdown
 AT SHUTDOWN * EXECUTE powerdown
-</code></pre>
 
 After everything is configured, you can restart nut services with `sudo systemctl restart nut`.
 To verify: `upsc ups@192.168.x.x`
@@ -184,9 +186,11 @@ Install NUT via homebrew -> `brew install nut`
 
 After that you have to configure 3 files: nut.conf, upsmon.conf and upssched.conf.
 
-nut.conf:<pre><code>MODE=netclient</code></pre>
+nut.conf:
+MODE=netclient
 
-upsmon.conf:<pre><code>`RUN_AS_USER root`
+upsmon.conf:
+RUN_AS_USER root
 
 MONITOR ups@192.168.22.117 1 upsmon secret slave
 
@@ -226,9 +230,9 @@ RBWARNTIME 43200
 NOCOMMWARNTIME 600
 
 FINALDELAY 5
-</code></pre>
 
-upssched.conf:<pre><code>CMDSCRIPT /usr/local/Cellar/nut/2.8.4/bin/upssched-cmd
+upssched.conf:
+CMDSCRIPT /usr/local/Cellar/nut/2.8.4/bin/upssched-cmd
 PIPEFN usr/local/etc/nut/upssched/upssched.pipe
 LOCKFN usr/local/etc/nut/upssched/upssched.lock
 
@@ -241,7 +245,6 @@ AT COMMOK * CANCEL-TIMER commbad commok
 AT NOCOMM * EXECUTE commbad
 AT SHUTDOWN * EXECUTE powerdown
 AT SHUTDOWN * EXECUTE powerdown
-</code></pre>
 
 After everything is configured, do `brew services start nut` to start nut services
 
@@ -251,7 +254,7 @@ And you can verify with the same command: `upsc ups@192.168.x.x`
 
 ### Windows
 
-Windows is also pretty straightforwarded process, you just need to download [WinNUT Client](https://github.com/nutdotnet/WinNUT-Client) and configure it, I won't go too much into detail since it's a GUI app and everything should be pretty self explanatory.
+Windows is also pretty straightforward process, you just need to download [WinNUT Client](https://github.com/nutdotnet/WinNUT-Client) and configure it, I won't go too much into detail since it's a GUI app and everything should be pretty self explanatory.
 
 WinNUT Setup:
 <img src="{{ site.baseurl }}/images/20250910_UPS/WinNUT_Setup.png" width="800"/>
