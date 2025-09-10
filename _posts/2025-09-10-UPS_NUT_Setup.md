@@ -10,8 +10,8 @@ During my summer vacation I was lucky enough to get an UPS from a local recycle 
 The UPS I got is an APC Back-UPS Pro 700. Line-Interactive UPS, 700VA/420W, 6x Ports (3x battery backup, 3x surge protection), with it hooking up my Mac Pro, TrueNAS and Proxmox PCs it's usually around 230~300W in normal circumstances and around 80W when my Mac Pro is in sleep, although I haven't put it under heavy load to see how much it can pull yet but should be enough to supply.
 
 UPS Placement + Close Up:
-<img src="{{ site.baseurl }}/images/20250910_UPS/UPS_Placement.jpeg" width="800"/>
-<img src="{{ site.baseurl }}/images/20250910_UPS/Close_Up.jpeg" width="800"/>
+<img src="{{ site.baseurl }}/images/20250910_UPS/UPS_Placement.jpeg" width="300"/>
+<img src="{{ site.baseurl }}/images/20250910_UPS/Close_Up.jpeg" width="300"/>
 
 # Hardware Setup
 
