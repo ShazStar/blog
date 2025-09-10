@@ -29,7 +29,7 @@ Firstly, we need to make sure UPS is connected and recongized by PC, so in the t
 <img src="{{ site.baseurl }}/images/20250910_UPS/lsusb.png" width="800"/>
 You can see on Bus 003 Device 002 is where my UPS connected to, take note of that.
 
-Important Notes: Because I already have root privileges on Proxmox, so there's no need to use sudo, but depending on which system you are using, you might need to use sudo
+Important Notes: Because I already have root privileges on Proxmox, so there's no need to use sudo, but depending on which system you are using, you might need to use sudo.
 
 Update repo with `apt update` then install nut, nut-client and nut-server with this command: `apt install nut nut-client nut-server`
 
@@ -246,7 +246,7 @@ AT NOCOMM * EXECUTE commbad
 AT SHUTDOWN * EXECUTE powerdown
 AT SHUTDOWN * EXECUTE powerdown
 
-After everything is configured, do `brew services start nut` to start nut services
+After everything is configured, do `brew services start nut` to start nut services.
 
 And you can verify with the same command: `upsc ups@192.168.x.x`
 <img src="{{ site.baseurl }}/images/20250910_UPS/upsc_slave_mac.png" width="800"/>
