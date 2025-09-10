@@ -31,7 +31,7 @@ You can see on Bus 003 Device 002 is where my UPS connected to, take note of tha
 
 Important Notes: Because I already have root privileges on Proxmox, so there's no need to use sudo, but depending on which system you are using, you might need to use sudo
 
-After that, update repo with `apt update` then install nut, nut-client and nut-server with this command: `apt install nut nut-client nut-server`
+Update repo with `apt update` then install nut, nut-client and nut-server with this command: `apt install nut nut-client nut-server`
 
 Use `nut-scanner -U` to probe UPS devices and get information from it, also take note of it.
 
@@ -40,7 +40,7 @@ We need to configure these files: ups.conf, upsmon.conf, upsd.conf, nut.conf and
 The example file have a lot of stuffs inside so I ended up backing up these files and remake new files to start fresh.
 You can do `cp /etc/nut/ups.conf /etc/nut/ups.example.conf` to copy a backup of the file and wipe out the original one, or do `mv /etc/nut/ups.conf /etc/nut/ups.example.conf` to rename it then remake new one, replace ups.conf to one you are going to edit, now let's get started to edit those file with nano: `nano /etc/nut/ups.conf`. Here's my config.
 
-ups.conf:
+#### ups.conf:
 pollinterval = 1
 maxretry = 3
 
@@ -52,16 +52,16 @@ vendorid = 051D
 productid = 0002
 serial = 3xxxxxxxxxxx
 
-upsmon.conf:
+#### upsmon.conf: 
 MONITOR ups@localhost 1 upsmon secret master
 
-upsd.conf:
+#### upsd.conf:
 LISTEN 0.0.0.0 3493
 
-nut.conf:
+#### nut.conf:
 MODE=netserver
 
-upsd.users:
+#### upsd.users:
 [monuser]
 password = secret
 upsmon master
@@ -81,14 +81,14 @@ You'll need to install apache2 and nut-cgi with `apt install apache2 nut-cgi`
 
 After installing you need to configure hosts.conf files -> `nano /etc/nut/hosts.conf`. As usual I backup the original file and make a new one.
 
-hosts.conf:
+#### hosts.conf:
 MONITOR ups@localhost "APC Back-UPS Pro 700"
 
 Then do `a2enmod cgi` to activate the module and `systemctl restart apache2` to restart apache2.
 
 You'll also have to edit upsset.conf files -> `nano /etc/nut/upsset.conf`
 
-upsset.conf:
+#### upsset.conf:
 I_HAVE_SECURED_MY_CGI_DIRECTORY
 
 You should be able to check the dashboard by going to here: `http://192.168.x.x/cgi-bin/nut/upsstats.cgi`, replace x.x with the ip of your master PC.
@@ -97,7 +97,7 @@ You should be able to check the dashboard by going to here: `http://192.168.x.x/
 
 ## Client PC Setup
 
-Time to move onto client PC setup, this will cover TrueNAS Scale, macOS and Windows.
+Time to move onto client PC setup, this will cover TrueNAS Scale, macOS, Linux and Windows.
 
 ### TrueNAS Scale
 This is pretty easy and straightforward to setup actually, all you need is go to System Settings -> Services and setup UPS in there, here's my settings, everything is pretty self explanatory: <img src="{{ site.baseurl }}/images/20250910_UPS/TrueNAS_Setup.png" width="800"/>
@@ -108,17 +108,17 @@ To verify, go to Settings -> Shell and do the same upsc command, but this time r
 
 If successfull you will see your UPS info: <img src="{{ site.baseurl }}/images/20250910_UPS/upsc_slave_truenas.png" width="800"/>
 
-### Linux Setup
+### Linux
 I personally don't have a Linux system hooked up to TrueNAS (Not counting TrueNAS & Proxmox), but I'll also include this here for someone who needs it, this may vary from what distro you used, I'll write one for Arch since that's what I used.
 
 Install NUT via pacman -> `sudo pacman -Syu nut`
 
 After that you have to configure 3 files: nut.conf, upsmon.conf and upssched.conf.
 
-nut.conf:
+#### nut.conf:
 MODE=netclient
 
-upsmon.conf:
+#### upsmon.conf:
 RUN_AS_USER root
 
 MONITOR ups@192.168.22.117 1 upsmon secret slave
@@ -160,7 +160,7 @@ NOCOMMWARNTIME 600
 
 FINALDELAY 5
 
-upssched.conf:
+#### upssched.conf:
 CMDSCRIPT /etc/nut/upssched-cmd
 PIPEFN /etc/nut/upssched/upssched.pipe
 LOCKFN /etc/nut/upssched/upssched.lock
@@ -180,16 +180,16 @@ To verify: `upsc ups@192.168.x.x`
 
 
 ### macOS
-This is a bit tricky but not as hard, all you need to remember is since NUT is installed via homebrew, the location of it are slightly different than its Linux counterpart, normally the NUT location will be inside `/etc/nut/`, but on macOS its in `/usr/local/Cellar` and its config file is stored in `/usr/local/etc/nut`
+This is a bit tricky but not as hard, all you need to remember is since NUT is installed via homebrew, the location of it are slightly different than its Linux counterpart, normally the NUT location will be inside `/etc/nut/`, but on macOS its in `/usr/local/Cellar` and its config file is stored in `/usr/local/etc/nut`.
 
 Install NUT via homebrew -> `brew install nut`
 
 After that you have to configure 3 files: nut.conf, upsmon.conf and upssched.conf.
 
-nut.conf:
+#### nut.conf:
 MODE=netclient
 
-upsmon.conf:
+#### upsmon.conf:
 RUN_AS_USER root
 
 MONITOR ups@192.168.22.117 1 upsmon secret slave
@@ -231,7 +231,7 @@ NOCOMMWARNTIME 600
 
 FINALDELAY 5
 
-upssched.conf:
+#### upssched.conf:
 CMDSCRIPT /usr/local/Cellar/nut/2.8.4/bin/upssched-cmd
 PIPEFN usr/local/etc/nut/upssched/upssched.pipe
 LOCKFN usr/local/etc/nut/upssched/upssched.lock
